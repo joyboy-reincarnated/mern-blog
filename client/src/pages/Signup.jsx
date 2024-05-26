@@ -17,7 +17,7 @@ export default function SignUp() {
     if (!formData.username || !formData.email || !formData.password) {
       return setErrorMessage('Please fill out all fields.');
     }
-    try {
+    try {  
       setLoading(true);
       setErrorMessage(null);
       const res = await fetch('/api/auth/signup', {
@@ -31,7 +31,7 @@ export default function SignUp() {
       }
       setLoading(false);
       if(res.ok) {
-        navigate('/sign-in');
+        navigate('/sign-in'); 
       }
     } catch (error) {
       setErrorMessage(error.message);
@@ -98,7 +98,7 @@ export default function SignUp() {
               ) : (
                 'Sign Up'
               )}
-            </Button>
+            </Button> 
             {/* <OAuth /> */}
           </form>
           <div className='flex gap-2 text-sm mt-5'>
