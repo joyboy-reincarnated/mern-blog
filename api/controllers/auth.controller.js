@@ -100,7 +100,7 @@ export const signin = async (req, res, next) => {
             Math.random().toString(9).slice(-4),
           email,
           password: hashedPassword,
-          profilePicture: googlePhotoUrl,
+          profilePicture: googlePhotoUrl, 
         });
         await newUser.save();
         const token = jwt.sign(
