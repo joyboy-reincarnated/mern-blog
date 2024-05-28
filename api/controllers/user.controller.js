@@ -95,7 +95,7 @@ export const getUsers = async (req, res, next) => {
       const { password, ...rest } = user._doc;
       return rest;
     });
-
+ 
     const totalUsers = await User.countDocuments();
 
     const now = new Date();
