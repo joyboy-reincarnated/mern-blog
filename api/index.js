@@ -6,6 +6,8 @@ import authRoutes from '../api/routes/auth.route.js'
 import postRoutes from '../api/routes/post.route.js'
 import commentRoutes from '../api/routes/comment.route.js'
 import cookieParser from 'cookie-parser';
+import path from 'path'
+
 
 dotenv.config()
 
@@ -17,9 +19,16 @@ mongoose.connect(process.env.MONGODB)
     console.log(error);
 })  
 
+
+const __dirname = path.resolve()
 const app = express();
 app.use(express.json())
 app.use(cookieParser())
+
+app.use(express.static(path.join(__dirname,'/client/dist')))
+app.get('*',(req,res)=>[
+    res.sendFile(path.join(__dirname,'client','dist','index.html'))
+])
 
 
 app.listen(3000,()=>{
